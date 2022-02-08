@@ -49,9 +49,28 @@ $ git clone https://github.com/iaakash47/Barrel_shifter.git
  Refer the following websites for installation of eSim :
  - https://static.fossee.in/esim/installation-files/Install_eSim_on_Windows.pdf
  - https://github.com/FOSSEE/eSim/blob/master/INSTALL
+ After Downloading eSim extract it choose the Directory to save the eSim Workspace 
+ 
+ 
+ ## Creation of project 
+ 1.Click on the New Project and save the file name without any space 
+ 2.Project will be created 
+ 
+ 
+ ## eSim Window 
+ ![eSim](https://user-images.githubusercontent.com/88897605/152910524-9211a17b-02d8-45a5-a353-28dc422f83c6.png)
+ 
+ 
+ 
+ ## eSim Schematic Window 
+ ![eSimWindow](https://user-images.githubusercontent.com/88897605/152910659-23f4e30a-12d6-4d09-bb6f-732041acbe60.png)
+ 
+ 
  
 ## Ngspice Installation
 Ngspice gets installed alongwith eSim. If any other version ids to be installed refer: http://ngspice.sourceforge.net/download.html
+
+
 
 ## Skywater Pdk Installation(Ubuntu)
 Open the terminal and follow these steps:
@@ -88,4 +107,13 @@ To Run the ckt using ngspice:
 5. And run the following command(ngspice filename.spice)
 - For reference to download the tools and get an exposure to simulation using eSim, ngspice and Sky130, you may want to check the course : [Link](https://www.udemy.com/share/104Ie63@EAkZWPY9P8VxMdqx7DK4NzA2SwmLzfA1pfjL_MLTmkTV9O283uXSWpJkSSNIPjmKmA==/)
 
+# Reference Circuit 
+
+CMOS transmission gates may be used in place of the simple pass transistor switches.In this project, a 8x4 right barrel shifter circuit using NMOS pass transistor logic is implemented in eSim with skywater 130nm technology. The shifter circuit takes 8 inputs bits and shifts them according to 5 control shift bits and generates 4 output bits
+* Reference Circuit of Barrel Shifter is as shown below 
+![IMG_20220208_081335](https://user-images.githubusercontent.com/88897605/152908383-16142e3f-ff9e-43f1-a74d-daa38e236ca8.jpg)
+
+# Reference Waveform
+* Reference Waveform of Barrel Shifter is as shown below
+![IMG_20220208_080218](https://user-images.githubusercontent.com/88897605/152909514-24875fbc-b2d1-4c3b-b07e-6ff87d665af7.jpg)
 
