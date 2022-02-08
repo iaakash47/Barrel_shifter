@@ -19,7 +19,7 @@
 
 # Introduction 
 #### Barrel Shifter 
-* Barrel Shifter is a digital circuit that can shift a data word by a specified number of bits without the use of any sequential logic, only pure combinational logic, i.e. it inherently provides a binary operationimportant function to optimize the RISC processor, so it is used for rotating and transferring the data either in left or right direction. This shifter is useful in lots of signal processing ICs. The Arithmetic and the Logical Shifters additionally can be changed by the Barrel Shifter Because with the rotation of the data it also supply the utility the data right, left change all mathemetically or logically.A purpose of this project is to design the CM with the help of CMOS using NMOS Pass Transistor logic.CMOS based 8 bit barrel shifter has implemented in this project using eSim and Ngspice tools using skywater 130nm PDKs Tech lib files 
+* Barrel Shifter is a digital circuit that can shift a data word by a specified number of bits without the use of any sequential logic, only pure combinational logic, i.e. it inherently provides a binary operation important function to optimize the RISC processor, so it is used for rotating and transferring the data either in left or right direction. This shifter is useful in lots of signal processing ICs. The Arithmetic and the Logical Shifters additionally can be changed by the Barrel Shifter Because with the rotation of the data it also supply the utility the data right, left change all mathemetically or logically.A purpose of this project is to design CMOS using NMOS Pass Transistor logic.CMOS based 8 bit barrel shifter has implemented in this project using eSim and Ngspice tools using skywater 130nm PDKs Tech lib files 
 
 
 
@@ -35,7 +35,8 @@
 
 2. Ngspice: Ngspice is the open source spice simulator for electric and electronic circuits. Ngspice offers a wealth of device models for active, passive, analog, and digital elements. Model parameters are provided by the semiconductor manufacturers. The user add her circuits as a netlist, and the output is one or more graphs of currents, voltages and other electrical quantities or is saved in a data file. For more info refer: http://ngspice.sourceforge.net/
 
-3. Skywater Pdk: The SkyWater Open Source PDK is a collaboration between Google and SkyWater Technology Foundry to provide a fully open source Process Design Kit and related resources, which can be used to create manufacturable designs at SkyWater’s facility. As of May 2020, this repository is targeting the SKY130 process node. If the SKY130 process node release is successful then in the future more advanced technology nodes may become available. For more info refer: https://github.com/google/skywater-pdk, https://skywater-pdk.readthedocs.io/en/latest/
+3. Skywater Pdk: The SkyWater Open Source PDK is a collaboration between Google and SkyWater Technology Foundry to provide a fully open source Process Design Kit and related resources, which can be used to create manufacturable designs at SkyWater’s facility. As of May 2020, this repository is targeting the SKY130 process node. If the SKY130 process node release is successful then in the future more advanced technology nodes may become available.
+For more info refer: https://github.com/google/skywater-pdk, https://skywater-pdk.readthedocs.io/en/latest/
 
 Clone this repository using the following commands:
 ```
@@ -61,3 +62,30 @@ cd open_pdks
 make
 sudo make install
 ```
+Follow these steps for Sky130 download and implementaion :
+1. Download sky130 from this link mentioned above and unzip it.
+2. Save the .cir.out file in the sky_fd_pr folder as .cir file.
+3. Open with notepad and add the path .lib "models/sky130.lib.spice" tt at the top.
+4. Replace with CMOSP, mos_p with sky130_fd_pr_pfet_01v8 and CMOSN, mos_n with  sky130_fd_pr_nfet_01v8.
+5. To replace inductor, capacitor, resistor do it this way, for Ex : L1 out gnd 1m by x1  out gnd mid 0 sky130_fd_pr__ind_03_90.
+
+```
+Note: For more details go to the cells folder in sky_fd_pr. 
+Open the specific component folder which you want to use. 
+Then open the test folder and check the SPICE file. 
+The SPICE file is an example of implementation of that component. 
+You will get to know how to use the component in your ckt.
+
+```
+
+6. Now Run the circuit with ngspice.
+
+To Run the ckt using ngspice:
+1. Replace with sky130nm cells and save this .cir file.
+2. Paste the .cir file in gedit document where the sky130_fd_pr folder is present  
+3. To Run the ngspice waveform,save the .cir file and replace with filename.spice  
+4. Open Terminal in the saved Directory 
+5. And run the following command(ngspice filename.spice)
+- For reference to download the tools and get an exposure to simulation using eSim, ngspice and Sky130, you may want to check the course : [Link](https://www.udemy.com/share/104Ie63@EAkZWPY9P8VxMdqx7DK4NzA2SwmLzfA1pfjL_MLTmkTV9O283uXSWpJkSSNIPjmKmA==/)
+
+
