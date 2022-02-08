@@ -53,8 +53,8 @@ $ git clone https://github.com/iaakash47/Barrel_shifter.git
  
  
  ## Creation of project 
- 1.Click on the New Project and save the file name without any space 
- 2.Project will be created 
+ * Click on the New Project and save the file name without any space 
+ * Project will be created 
  
  
  ## eSim Window 
@@ -116,4 +116,140 @@ CMOS transmission gates may be used in place of the simple pass transistor switc
 # Reference Waveform
 * Reference Waveform of Barrel Shifter is as shown below
 ![IMG_20220208_080218](https://user-images.githubusercontent.com/88897605/152909514-24875fbc-b2d1-4c3b-b07e-6ff87d665af7.jpg)
+
+
+## Methodology
+
+# Prelayout Simulation in eSim and Ngspice
+Refer following manual to know how to operate eSim:
+https://static.fossee.in/esim/manuals/eSim_Manual_2020_August.pdf
+
+## Schematic 
+- Construct the "8 * 4 Barrel Shifter using NMOS" as shown in the figure below using eSim 
+![Barrel_Shifter_Schematic](https://user-images.githubusercontent.com/88897605/152915643-128d7179-5bb5-40e9-8096-07b7ff87ee1b.png)
+
+# Circuit Schematic
+* 8 * 4 Barrel Shifter using NMOS
+![IMG_20220208_093228](https://user-images.githubusercontent.com/88897605/152916106-d471380d-1381-4beb-9add-bffccb4442fd.jpg)
+
+- Once every step is followed perfectly open the Netlist that is generated and make the necessary changes to add the Sky130 models
+- The Netlist generated initially is as shown below and replace the components with skywater130nm cells
+
+
+# Netlist 
+ 
+```
+* /home/user/eSim-Workspace/Barrel_shifter/bareelshifter.cir
+
+* EESchema Netlist Version 1.1 (Spice format) creation date: Mon Jan 31 16:56:06 2022
+
+.lib "sky130_fd_pr/models/sky130.lib.spice" tt
+
+* Sheet Name: /
+xM16 Out_4 GND input_in3 GND sky130_fd_pr__nfet_01v8 
+xM17 Out_4 GND input_in4 GND sky130_fd_pr__nfet_01v8 	
+xM18 Out_4 GND input_in5 GND sky130_fd_pr__nfet_01v8 			
+xM19 Out_4 GND input_in6 GND sky130_fd_pr__nfet_01v8 	  
+xM20 Out_4 Vdd input_in7 GND sky130_fd_pr__nfet_01v8 	
+xM11 Out_3 GND input_in2 GND sky130_fd_pr__nfet_01v8 		
+xM12 Out_3 GND input_in3 GND sky130_fd_pr__nfet_01v8 		
+xM13 Out_3 GND input_in4 GND sky130_fd_pr__nfet_01v8 		
+xM14 Out_3 GND input_in5 GND sky130_fd_pr__nfet_01v8 	
+xM15 Out_3 Vdd input_in6 GND sky130_fd_pr__nfet_01v8 		
+xM6  Out_2 GND input_in1 GND sky130_fd_pr__nfet_01v8 		
+xM7  Out_2 GND input_in2 GND sky130_fd_pr__nfet_01v8 
+xM8  Out_2 GND input_in3 GND sky130_fd_pr__nfet_01v8 
+xM9  Out_2 GND input_in4 GND sky130_fd_pr__nfet_01v8 
+xM10 Out_2 Vdd input_in5 GND sky130_fd_pr__nfet_01v8		
+xM1  Out_1 GND input_in0 GND sky130_fd_pr__nfet_01v8 	
+xM2  Out_1 GND input_in1 GND sky130_fd_pr__nfet_01v8 			
+xM3  Out_1 GND input_in2 GND sky130_fd_pr__nfet_01v8 		
+xM4  Out_1 GND input_in3 GND sky130_fd_pr__nfet_01v8 	
+xM5  Out_1 Vdd input_in4 GND sky130_fd_pr__nfet_01v8 			
+*U1 input_in0 PORT
+*U2 input_in1 PORT
+*U3 input_in2 PORT
+*U4 input_in3 PORT
+*U5 Vdd PORT
+*U6 input_in4 PORT
+*U7 input_in5 PORT
+*U8 input_in6 PORT
+*U9 input_in7 PORT
+*U10 Out_3 PORT
+*U11 Out_2 PORT
+*U12 Out_1 PORT
+*U13 Out_4 PORT		
+
+V1 input_in4 0 PULSE(0 1.8 1n 10p 10p 10n 20n)
+V2 input_in5 0 PULSE(0 1.8 7n 10p 10p 10n 20n)
+V3 input_in6 0 PULSE(0 1.8 3n 10p 10p 10n 20n)
+V4 input_in7 0 PULSE(0 1.8 9n 10p 10p 10n 20n)
+VDD Vdd 0 1.5V
+V6 input_in0 0 PULSE(0 1.8 4n 10p 10p 10n 20n)
+V7 input_in1 0 PULSE(0 1.8 8n 10p 10p 10n 20n)
+V8 input_in2 0 PULSE(0 1.8 12n 10p 10p 10n 20n)
+V9 input_in3 0 PULSE(0 1.8 16n 10p 10p 10n 20n)
+
+.tran 0.4ns 40ns 
+
+.control
+run
+plot V(input_in0)
+plot V(input_in1) 
+plot V(input_in2) 
+plot V(input_in3) 
+plot V(input_in4) 
+plot V(input_in5) 
+plot V(input_in6) 
+plot V(input_in7)
+plot V(Out_1)   
+plot V(Out_2)
+plot V(Out_3) 
+plot V(Out_4)  
+
+
+.endc
+.end
+
+
+```
+
+
+* Save the above ngspice subcircuit spice file in a folder where the sky_fd_pr_ folder is present
+
+![sky130_fd_pr](https://user-images.githubusercontent.com/88897605/152917186-7c4c159a-60f4-4542-9786-ccf0d56f2d8e.png)
+
+* Run the spice file with following Terminal Command as shown 
+
+![terminal_command](https://user-images.githubusercontent.com/88897605/152917510-dd98597e-ec33-44fb-94c1-68c6b5c2328d.png)
+
+## Initial Transitent Analysis
+![IMG_20220208_095310](https://user-images.githubusercontent.com/88897605/152917940-d0fe923f-dc7f-499b-a4c3-5805c97c00b5.jpg)
+
+
+# Waveforms 
+* Input Waveforms (8 Inputs)
+* Output Waveforms (4 Outputs)
+
+# Input Waveforms 
+![IMG_20220208_100727](https://user-images.githubusercontent.com/88897605/152919187-7b0681c7-d53e-4f83-9dec-1adf9ca3a55a.jpg)
+
+# Output Waveforms 
+![outputwaveform](https://user-images.githubusercontent.com/88897605/152919496-e5d81c89-8ff1-479d-8d8a-c3d52409649d.png)
+
+# References
+- Realization of 8 x 4 barrel shifter with 4-bit binary to gray
+- Design of Various 4 Bit Shifters using CMOS
+
+## Author
+
+- [Aakash.K](https://github.com/iaakash47), Bachelor of Engineering in Electronics and Communication Engineering, Bengaluru
+
+
+
+
+
+
+
+
 
