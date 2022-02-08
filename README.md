@@ -131,6 +131,29 @@ https://static.fossee.in/esim/manuals/eSim_Manual_2020_August.pdf
 - Once every step is followed perfectly open the Netlist that is generated and make the necessary changes to add the Sky130 models
 - The Netlist generated initially is as shown below and replace the components with skywater130nm cells
 
+#### Editing the Netlist
+```
+
+a) To execute the .cir file, follow these steps:
+Step 1: Open the .cir file (barrel_shifter.cir in my case) with notepad 
+Step 2: Make sure the path .lib "sky130_fd_pr/models/sky130.lib.spice" tt at the top.
+Step 3: Make sure that all mosfets are replace with sky130_fd_pr__nfet_01v8
+Step 4: Delete any / added if any 
+Step 5: Prefix x with all Transistors starting with M. Do this for all transistors 
+e.g Before M1, after xM1
+Step 6: Comment with * if any ports are added by defaults 
+e.g *U1  /input_In0 PORT	
+*U9  /Out_0 PORT	
+Step 7: Next Start adding Inputs sources, supply voltage, etc (Vdd was considered as 1.8V)
+Step 8: Add .tran statement with initial step time and final stop time 
+eg. .tran 0.4ns 40ns 
+Step8: Add .control command and run command to run the plot 
+Step9: Add the voltage or current input or output quantities to be plotted 
+eg. plot V(input_In0) 
+plot V(Out_0) 
+Step 10: Last step is to add .endc followed by .end command 
+
+```
 * Now Run the circuit with ngspice.
 
 To Run the ckt using ngspice:
