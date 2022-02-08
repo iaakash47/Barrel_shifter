@@ -1,35 +1,43 @@
-# Barrel shifter
-* This project focuses on design of a 8x4 right Barrel Shifter using NMOS pass transistor logic using Google Skywater (sky130) Technology node with operating voltage of 1.8V and 3.3V. The project is build using Open Source Tools like Sky130PDK and eSim and Ngspice. Refer following website for more details on Barrel Shifter:https://en.wikipedia.org/wiki/Barrel_shifter
+# 8x4 Barrel Shifter using NMOS Pass Transistor Logic
+* This project focuses on design of a 8x4 right Barrel Shifter using NMOS pass transistor logic using Google Skywater (sky130nm) Technology node with operating voltage of 1.8V and 3.3V. The project is build using Open Source Tools like Sky130PDK and eSim and Ngspice. Refer following website for more details on Barrel Shifter:https://en.wikipedia.org/wiki/Barrel_shifter
  
 # Table of Contents
 
-1. [Introduction](#Introduction)
+1. [Introduction](#introduction)
 2. [Installation of the tools](#installation-of-the-tools)
-3. [Methodology](#Methodology)
-    - [Step1 Construct AND Gate](#step1-construct-and-gate)
-    - [Step2 Construct XOR Gate](#Step2-Construct-XOR-Gate)
-    - [Step3 Construct Half Adder](#step3-construct-half-adder)
-    - [Step4 Construct Full Adder](#step4-construct-full-adder)
-    - [Step5 Construct 3-Bit Wallace Multiplier](#step5-construct-3-bit-wallace-multiplier) 
-4. [Results](#results)
-    - [Command Window](#command-window)
-    - [Obtained Output Waveforms](#obtained-output-waveforms)
-5. [References](#references)
-6. [Author](#author)
+3. [Creation of project](#creation-of-project)
+    * [eSim Window ](#esim-window)
+    * [eSim Schematic Window](#esim-schematic-window)
+4. [Reference Circuit](#reference-circuit)
+5. [Reference Waveform](#reference-waveform)
+6. [Methodology](#methodology) 
+7. [Schematic](#schematic)
+8. [Circuit Schematic](#circuit-schematic)
+9. [Netlist](#netlist)
+10. [Initial Transitent Analysis](#initial-transitent-analysis)
+11. [Waveforms](#waveforms)
+    -[Input Waveforms](#input-waveforms)
+    -[Output Waveforms](#output-waveforms)
+12. [References](#references)
+13. [Contributor](#contributor)
+14. [Acknowledgments](#acknowledgments)
 
-# Introduction 
+
+## Introduction 
 #### Barrel Shifter 
 * Barrel Shifter is a digital circuit that can shift a data word by a specified number of bits without the use of any sequential logic, only pure combinational logic, i.e. it inherently provides a binary operation important function to optimize the RISC processor, so it is used for rotating and transferring the data either in left or right direction. This shifter is useful in lots of signal processing ICs. The Arithmetic and the Logical Shifters additionally can be changed by the Barrel Shifter Because with the rotation of the data it also supply the utility the data right, left change all mathemetically or logically.A purpose of this project is to design CMOS using NMOS Pass Transistor logic.CMOS based 8 bit barrel shifter has implemented in this project using eSim and Ngspice tools using skywater 130nm PDKs Tech lib files 
 
+## Installation of the Tools
+
+- eSim : [Link](https://esim.fossee.in/downloads)
+- Ngspice : [Link](https://sourceforge.net/projects/ngspice/files/)
+ * Ngspice gets installed alongwith eSim. If any other version ids to be installed refer: http://ngspice.sourceforge.net/download.html
+- Sky130 PDK : [Link](https://static.fossee.in/esim/installation-files/sky130_fd_pr.zip)
+ 
+  * After Downloading eSim extract it choose the Directory to save the eSim Workspace
 
 
-
-
-
-
-
-
-# Opensource Tools used
+* Opensource Tools used
 
 1. eSim: eSim (previously known as Oscad / FreeEDA) is a free/libre and open source EDA tool for circuit design, simulation, analysis and PCB design developed by FOSSEE, IIT Bombay. It is an integrated tool    built using free/libre and open source software such as KiCad, Ngspice and GHDL. eSim is released under GPL. eSim offers similar capabilities and ease of use as any equivalent proprietary software for schematic creation, simulation and PCB design, without having to pay a huge amount of money to procure licenses. Hence it can be an affordable alternative to educational institutions and SMEs. It can serve as an alternative to commercially available/licensed software tools like OrCAD, Xpedition and HSPICE. For more info refer: https://esim.fossee.in/home
 
@@ -37,40 +45,6 @@
 
 3. Skywater Pdk: The SkyWater Open Source PDK is a collaboration between Google and SkyWater Technology Foundry to provide a fully open source Process Design Kit and related resources, which can be used to create manufacturable designs at SkyWater’s facility. As of May 2020, this repository is targeting the SKY130 process node. If the SKY130 process node release is successful then in the future more advanced technology nodes may become available.
 For more info refer: https://github.com/google/skywater-pdk, https://skywater-pdk.readthedocs.io/en/latest/
-
-Clone this repository using the following commands:
-```
-$ sudo apt install -y git
-$ git clone https://github.com/iaakash47/Barrel_shifter.git
-```
-# Installation Instructions
-
-## eSim Installation
- Refer the following websites for installation of eSim :
- - https://static.fossee.in/esim/installation-files/Install_eSim_on_Windows.pdf
- - https://github.com/FOSSEE/eSim/blob/master/INSTALL
- After Downloading eSim extract it choose the Directory to save the eSim Workspace 
- 
- 
- ## Creation of project 
- * Click on the New Project and save the file name without any space 
- * Project will be created 
- 
- 
- ## eSim Window 
- ![eSim](https://user-images.githubusercontent.com/88897605/152910524-9211a17b-02d8-45a5-a353-28dc422f83c6.png)
- 
- 
- 
- ## eSim Schematic Window 
- ![eSimWindow](https://user-images.githubusercontent.com/88897605/152910659-23f4e30a-12d6-4d09-bb6f-732041acbe60.png)
- 
- 
- 
-## Ngspice Installation
-Ngspice gets installed alongwith eSim. If any other version ids to be installed refer: http://ngspice.sourceforge.net/download.html
-
-
 
 ## Skywater Pdk Installation(Ubuntu)
 Open the terminal and follow these steps:
@@ -81,6 +55,15 @@ cd open_pdks
 make
 sudo make install
 ```
+
+#### Cloning
+* Clone this repository using the following commands:
+```
+$ sudo apt install -y git
+$ git clone https://github.com/iaakash47/Barrel_shifter.git
+
+``` 
+ 
 Follow these steps for Sky130 download and implementaion :
 1. Download sky130 from this link mentioned above and unzip it.
 2. Save the .cir.out file in the sky_fd_pr folder as .cir file.
@@ -97,7 +80,20 @@ You will get to know how to use the component in your ckt.
 
 ```
 
-6. Now Run the circuit with ngspice.
+ 
+ ## Creation of project 
+ * Click on the New Project and save the file name without any space 
+ * Project will be created 
+ 
+ 
+ ## eSim Window 
+ ![eSim](https://user-images.githubusercontent.com/88897605/152910524-9211a17b-02d8-45a5-a353-28dc422f83c6.png)
+ 
+ 
+ 
+ ## eSim Schematic Window 
+ ![eSimWindow](https://user-images.githubusercontent.com/88897605/152910659-23f4e30a-12d6-4d09-bb6f-732041acbe60.png)
+ 
 
 To Run the ckt using ngspice:
 1. Replace with sky130nm cells and save this .cir file.
@@ -134,6 +130,16 @@ https://static.fossee.in/esim/manuals/eSim_Manual_2020_August.pdf
 
 - Once every step is followed perfectly open the Netlist that is generated and make the necessary changes to add the Sky130 models
 - The Netlist generated initially is as shown below and replace the components with skywater130nm cells
+
+* Now Run the circuit with ngspice.
+
+To Run the ckt using ngspice:
+1. Replace with sky130nm cells and save this .cir file.
+2. Paste the .cir file in gedit document where the sky130_fd_pr folder is present  
+3. To Run the ngspice waveform,save the .cir file and replace with filename.spice  
+4. Open Terminal in the saved Directory 
+5. And run the following command(ngspice filename.spice)
+- For reference to download the tools and get an exposure to simulation using eSim, ngspice and Sky130, you may want to check the course : [Link](https://www.udemy.com/share/104Ie63@EAkZWPY9P8VxMdqx7DK4NzA2SwmLzfA1pfjL_MLTmkTV9O283uXSWpJkSSNIPjmKmA==/)
 
 
 # Netlist 
@@ -241,9 +247,16 @@ plot V(Out_4)
 - Realization of 8 x 4 barrel shifter with 4-bit binary to gray
 - Design of Various 4 Bit Shifters using CMOS
 
-## Author
 
-- [Aakash.K](https://github.com/iaakash47), Bachelor of Engineering in Electronics and Communication Engineering, Bengaluru
+# Contributor
+Aakash.K</br>
+Contact:iaakashkrish@gmail.com</br>
+
+Kunal Ghosh, Co-founder, VSD Corp. Pvt. Ltd. - kunalpghosh@gmail.com
+
+# Acknowledgments
+Kunal Ghosh, Co-founder, VSD Corp. Pvt. Ltd. - kunalpghosh@gmail.com
+
 
 
 
