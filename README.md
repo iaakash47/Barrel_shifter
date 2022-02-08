@@ -1,5 +1,5 @@
 # 8x4 Barrel Shifter using NMOS Pass Transistor Logic
-* This project focuses on design of a 8x4 right Barrel Shifter using NMOS pass transistor logic using Google Skywater (sky130nm) Technology node with operating voltage of 1.8V and 3.3V. The project is build using Open Source Tools like Sky130PDK and eSim and Ngspice. Refer following website for more details on Barrel Shifter:https://en.wikipedia.org/wiki/Barrel_shifter
+* This project focuses on design of a 8x4 right Barrel Shifter using NMOS pass transistor logic using Google Skywater (sky130nm) Technology node with operating voltage of 1.8V .The project is build using Open Source Tools like Sky130PDK and eSim and Ngspice. Refer following website for more details on Barrel Shifter:https://en.wikipedia.org/wiki/Barrel_shifter
  
 # Table of Contents
 
