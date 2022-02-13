@@ -46,6 +46,15 @@
 3. Skywater Pdk: The SkyWater Open Source PDK is a collaboration between Google and SkyWater Technology Foundry to provide a fully open source Process Design Kit and related resources, which can be used to create manufacturable designs at SkyWater’s facility. As of May 2020, this repository is targeting the SKY130 process node. If the SKY130 process node release is successful then in the future more advanced technology nodes may become available.
 For more info refer: https://github.com/google/skywater-pdk, https://skywater-pdk.readthedocs.io/en/latest/
 
+
+## Google SkyWater PDK
+
+The SkyWater Open Source PDK is a collaboration between Google and SkyWater Technology Foundry to provide a fully open source Process Design Kit and related resources, which can be used to create manufacturable designs at SkyWater’s facility.
+
+![skywater-pdk-logo](https://user-images.githubusercontent.com/80625515/152778227-8a0c133c-ec8e-4f1a-96bc-2739e4689419.png)
+
+More details of SkyWater Open Source PDK can be found [here](https://github.com/google/skywater-pdk).
+
 ## Skywater Pdk Installation(Ubuntu)
 Open the terminal and follow these steps:
 ```
